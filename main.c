@@ -23,13 +23,13 @@ data_to_read = i2c_read(slave_address, reg);
 
 
 printf("Manufacturing ID     %x",*(data_to_read+1));
-printf("%x",*data_to_read);
+printf("%x\n",*data_to_read);
 
 //read device id at 0xFFH
 reg = 0xFF;
 data_to_read = i2c_read(slave_address, reg);
 
-printf("data_to_read [1]  %x",*(data_to_read+1));
+printf("Device ID  %x",*(data_to_read+1));
 printf("%x",*data_to_read);
 
 
