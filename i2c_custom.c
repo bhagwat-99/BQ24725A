@@ -56,8 +56,8 @@ unsigned char * i2c_read(unsigned char slave_addr, unsigned char reg)
         return inbuf;
 }
 
-
-void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char *data_to_write )
+// void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char *data_to_write );
+void i2c_write_custom(unsigned char slave_addr, unsigned char reg)
 {
     struct i2c_msg msgs[1];
     struct i2c_rdwr_ioctl_data msgset[1];
@@ -65,8 +65,10 @@ void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char
     unsigned char outbuf[3];
 
     outbuf[0] = reg;
-    outbuf[1] = *data_to_write;
-    outbuf[2] = *(data_to_write+1);
+    // outbuf[1] = *data_to_write;
+    // outbuf[2] = *(data_to_write+1);
+    outbuf[1] = 0x00;
+    outbuf[2] = 0x04;
 
     printf("outbuf[2] %x\n",outbuf[2]);
     printf("outbuf[1] %x\n",outbuf[1]);
