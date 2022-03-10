@@ -1,18 +1,10 @@
 
-#include <stdio.h> // printf()
-#include <sys/types.h> // open()
-#include <sys/stat.h> // open()
-#include <fcntl.h> // open()
-#include <sys/ioctl.h> // ioctl()
-#include <errno.h> // errno
-#include <string.h> // strerror()
-#include <unistd.h> // close()
-#include <linux/i2c-dev.h> // struct i2c_msg
-#include <linux/i2c.h> // struct i2c_rdwr_ioctl_data
+#include "i2c_custom.h"
 
 int fd_i2c = -1; // i2c bus file descriptor
 const char *i2c_bus = "/dev/apalis-i2c1";
 unsigned char slave_address = 0x09;
+unsigned char reg;
 
 
 int i2c_init(void)
@@ -98,17 +90,24 @@ __uint16_t i2c_read(unsigned char slave_addr, unsigned char reg)
 
 int main()
 {
-    i2c_init();
+        i2c_init();
 
-        i2c_write(0x09, 0x14, 0x00, 0x04 );//writing configuration register
-        i2c_write(0x09, 0x15, 0x00, 0x38 );//writing configuration register
+        reg=0x14;
+        unsigned char low_byte = 0x00;
+        unsigned char high_byte = 0x04;
+        i2c_write(slave_address, reg, low_byte, high_byte );//writing configuration register
 
+        reg=0x15;
+        low_byte = 0x00;
+        high_byte = 0x38;
+        i2c_write(slave_address, reg, low_byte, high_byte );//writing configuration register
 
-   // sleep(1);
+        // sleep(1);
+        reg = 0x14;
+        i2c_read(slave_address, reg);//reading result register
 
-    i2c_read(slave_address, 0x14);//reading result register
-
-    i2c_read(slave_address, 0x15);//reading result register
+        reg = 0x15;
+        i2c_read(slave_address, reg);//reading result register
 
     //float Lux = reg_value * 0.0576 ; // gain = 1 and integration time = 100ms multiplication factor = 0.0576
 
