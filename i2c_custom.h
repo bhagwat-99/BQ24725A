@@ -20,13 +20,4 @@ __uint16_t i2c_read(unsigned char slave_addr, unsigned char reg);
 int i2c_write(unsigned char slave_addr, unsigned char reg, unsigned char low_byte, unsigned char high_byte );
 
 
-
-// //write to i2c slave
-// void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char *data_to_write );
-
-
-// //read from slave
-// unsigned char * i2c_read(unsigned char slave_addr, unsigned char reg);
-
-
 #endif
