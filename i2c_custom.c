@@ -68,6 +68,10 @@ void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char
     outbuf[1] = *data_to_write;
     outbuf[2] = *(data_to_write+1);
 
+    printf("outbuf[2] %x\n",outbuf[2]);
+    printf("outbuf[1] %x\n",outbuf[1]);
+
+
     msgs[0].addr = slave_addr;
     msgs[0].flags = 0;// 0 for write 
     msgs[0].len = 2;

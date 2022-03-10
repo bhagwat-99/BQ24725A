@@ -1,7 +1,7 @@
 #include "i2c_custom.h"
 
 //slave address
-const unsigned char slave_address = 0x09;
+unsigned char slave_address = 0x09;
 char *i2c_bus =  "/dev/apalis-i2c1";
 
 
