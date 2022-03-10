@@ -19,15 +19,18 @@ unsigned char* data_to_read;
 
 //read manufacturing id at 0xFEH
 unsigned char reg = 0xFE;
-data_to_read = i2c_read(
-        slave_address, reg);
+data_to_read = i2c_read(slave_address, reg);
 
-printf("data_to_read [0]  %x",*data_to_read);
+
+printf("Manufacturing ID     %x",*(data_to_read+1));
+printf("%x",*data_to_read);
+
+//read device id at 0xFFH
+reg = 0xFF;
+data_to_read = i2c_read(slave_address, reg);
+
 printf("data_to_read [1]  %x",*(data_to_read+1));
-
-// //read device id at 0xFFH
-// unsigned char reg = 0xFF;
-// data_to_read = i2c_read(&fd_i2c, slave_address, reg);
+printf("%x",*data_to_read);
 
 
 // //register to write 0x14
