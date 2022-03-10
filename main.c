@@ -28,18 +28,6 @@ data_to_read = i2c_read(slave_address, reg);
 printf("Device ID  %x",*(data_to_read+1));
 printf("%x\n",*data_to_read);
 
-//read charge_current() at 0x14H
-reg = 0x14;
-data_to_read = i2c_read(slave_address, reg);
-printf("0x14     %x",*(data_to_read+1));
-printf("%x\n",*data_to_read);
-
-//read charge_voltage at 0x15H
-reg = 0x15;
-data_to_read = i2c_read(slave_address, reg);
-printf("0x15  %x",*(data_to_read+1));
-printf("%x\n",*data_to_read);
-
 
 
 // //register to write 0x14

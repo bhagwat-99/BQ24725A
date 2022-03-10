@@ -16,8 +16,7 @@ void i2c_init(char *i2c_bus);
 void i2c_close();
 
 //write to i2c slave
-// void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char *data_to_write );
-void i2c_write_custom(unsigned char slave_addr, unsigned char reg);
+void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char *data_to_write );
 
 
 //read from slave
