@@ -19,26 +19,36 @@ unsigned char data_to_write[2];
 //read manufacturing id at 0xFEH
 unsigned char reg = 0xFE;
 data_to_read = i2c_read(slave_address, reg);
-
-
 printf("Manufacturing ID     %x",*(data_to_read+1));
 printf("%x\n",*data_to_read);
 
 //read device id at 0xFFH
 reg = 0xFF;
 data_to_read = i2c_read(slave_address, reg);
-
 printf("Device ID  %x",*(data_to_read+1));
 printf("%x\n",*data_to_read);
 
-
-//register to write 0x14
+//read charge_current() at 0x14H
 reg = 0x14;
-data_to_write[1]=0x04;//msb
-data_to_write[0]=0x00;//lsb
+data_to_read = i2c_read(slave_address, reg);
+printf("0x14     %x",*(data_to_read+1));
+printf("%x\n",*data_to_read);
 
-// i2c_write_custom(slave_address, reg, data_to_write );
-i2c_write_custom(slave_address, reg);
+//read charge_voltage at 0x15H
+reg = 0x15;
+data_to_read = i2c_read(slave_address, reg);
+printf("0x15  %x",*(data_to_read+1));
+printf("%x\n",*data_to_read);
+
+
+
+// //register to write 0x14
+// reg = 0x14;
+// data_to_write[1]=0x04;//msb
+// data_to_write[0]=0x00;//lsb
+
+// // i2c_write_custom(slave_address, reg, data_to_write );
+// i2c_write_custom(slave_address, reg);
 
 // //register to write 0x15
 // reg = 0x15;
