@@ -12,8 +12,14 @@
 #include <linux/i2c-dev.h> // struct i2c_msg
 #include <linux/i2c.h> // struct i2c_rdwr_ioctl_data
 
-// void i2c_init(char *i2c_bus);
-// void i2c_close();
+void i2c_init(char *i2c_bus);
+void i2c_close(void);
+
+__uint16_t i2c_read(unsigned char slave_addr, unsigned char reg);
+
+int i2c_write(unsigned char slave_addr, unsigned char reg, unsigned char low_byte, unsigned char high_byte );
+
+
 
 // //write to i2c slave
 // void i2c_write_custom(unsigned char slave_addr, unsigned char reg, unsigned char *data_to_write );
