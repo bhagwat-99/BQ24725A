@@ -26,12 +26,12 @@ int main()
         reg = 0xFE;
         data_to_read = i2c_read(slave_address, reg);//reading result register
         printf("Manufacturing ID %x",*(data_to_read+1));
-        printf("%x\n",*data_to_read);
+        printf("%#x\n",*data_to_read);
 
         reg = 0xFF;
         data_to_read = i2c_read(slave_address, reg);//reading result register
         printf("Device ID %x",*(data_to_read+1));
-        printf("%x\n",*data_to_read);
+        printf("%#x\n",*data_to_read);
 
         
 
